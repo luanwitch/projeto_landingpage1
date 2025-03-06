@@ -4,6 +4,7 @@ import gulpSass from "gulp-sass";
 import uglify from "gulp-uglify";
 import cleanCSS from "gulp-clean-css";
 import { deleteAsync } from "del";
+import fs from 'fs';
 
 // Agora associamos o gulpSass com o sass corretamente
 const sassCompiler = gulpSass(sass);
@@ -16,7 +17,7 @@ async function clean() {
 // Função para compilar o SASS para CSS
 function styles() {
     return gulp.src("src/styles/**/*.scss")
-        .pipe(sassCompiler({ outputStyle: "compressed" }).on("error", function (err) { // Modificação aqui
+        .pipe(sassCompiler({ outputStyle: "compressed" }).on("error", function (err) {
             console.error(err.message); // Exibe a mensagem de erro no console
             this.emit('end'); // Continua a execução, mas emite o erro
         }))
@@ -26,9 +27,15 @@ function styles() {
 
 // Função para minificar os arquivos JavaScript
 function scripts() {
-    return gulp.src("src/scripts/**/*.js")
-        .pipe(uglify())
-        .pipe(gulp.dest("./public/js/"));
+    // Verifica se o diretório src/scripts existe antes de tentar processá-lo
+    if (fs.existsSync('src/scripts')) {
+        return gulp.src("src/scripts/**/*.js")
+            .pipe(uglify())
+            .pipe(gulp.dest("./public/js/"));
+    } else {
+        console.log("Diretório 'src/scripts' não encontrado. Ignorando tarefa de scripts.");
+        return Promise.resolve();  // Retorna uma Promise resolvida para evitar erro
+    }
 }
 
 // Função para observar alterações nos arquivos
