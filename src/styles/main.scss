@@ -1,0 +1,207 @@
+@use 'variaveis';
+@use 'content';
+@use 'galery';
+@use 'characters';
+
+// Reset de estilos padrão
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Avenir', sans-serif;
+    list-style: none;
+    letter-spacing: 1px;
+}
+
+body { 
+    background-color: variaveis.$corDeFundo; 
+}
+
+// Mixin de texto
+@mixin text($fontSize: 16px) { 
+    font-size: $fontSize;
+    line-height: 1.6;
+    color: #333;
+}
+
+// Mixin de título
+@mixin title($fontSize: 40px) {
+    @include text($fontSize);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+// Estilos de texto
+.text--big { 
+    @include text(18px);
+    background-color: variaveis.$corPrincipal;
+
+    @media (max-width: 768px) { 
+        @include text(15px);
+    }
+}
+
+.text { 
+    @include text(16px);
+
+    @media (max-width: 768px) { 
+        @include text(14px);
+    }
+}
+
+.text--small { 
+    @include text(12px);
+    background-color: variaveis.$background-color-light;
+
+    @media (max-width: 768px) { 
+        @include text(11px);
+    }
+}
+
+// Estilos de título
+.title--big { 
+    @include title(44px);
+
+    @media (max-width: 768px) { 
+        @include title(26px);
+    }
+}
+
+.title { 
+    @include title(40px);
+    display: block;
+    margin: 0 auto 20px;
+
+    @media (max-width: 768px) { 
+        @include title(24px);
+    }
+}
+
+.title img { 
+    display: block;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+.title--small { 
+    @include title(28px);
+
+    @media (max-width: 768px) { 
+        @include title(22px);
+    }
+}
+
+// Estilos de botão
+.button { 
+    display: flex;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 16px;
+    justify-content: center;
+    background-color: variaveis.$corPrincipal;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
+
+
+    @media (max-width: 768px){ 
+        font-size: 14px;
+        width: 160px;
+        height: 40px;
+    }
+}
+
+// Sessão de conteúdo com imagem e texto
+.image-text-section {
+    padding: 5.6vw;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    &__image-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+    }
+
+    &__image {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    &__text {
+        flex: 1;
+        padding: 0 2vw;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &:nth-of-type(2) .image-text-section__content {
+        flex-direction: row-reverse;
+    }
+}
+
+// Sessão de imagem em tela cheia
+.image-text-section--image-full-width {
+    display: block;
+    width: 100%;
+    position: relative;
+    
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    
+    &__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+
+        @media (max-width: 768px){
+            position: relative;
+            left: 0;
+            width: 100%;
+            transform: none;
+        }
+    }
+
+    &__text {
+        .title {
+            margin-bottom: 16px;
+        }
+        p {
+            text-align: center;
+        }
+    }
+}

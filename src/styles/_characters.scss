@@ -1,0 +1,78 @@
+/* Estilo geral para a seção de Personagens */
+.characters {
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+    margin-bottom: 50px; /* Espaço abaixo da seção */
+}
+
+/* Título da seção */
+.characters__title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+}
+
+/* Lista de personagens */
+.characters__list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px; /* Espaçamento acima da lista */
+}
+
+/* Item individual de personagem */
+.characters__item {
+    width: 250px;
+    text-align: center;
+    border-radius: 12px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Imagem do personagem */
+.characters__image {
+    width: 80%; /* Define a largura como 80% do contêiner */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px; /* Espaço abaixo da imagem */
+}
+
+
+/* Nome do personagem */
+.characters__name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; /* Espaço abaixo do nome */
+}
+
+/* Descrição do personagem */
+.characters__bio {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Efeito de hover nos itens */
+.characters__item:hover {
+    transform: translateY(-8px); /* Eleva o item ao passar o mouse */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .characters__list {
+        flex-direction: column; /* Empilha os itens em telas pequenas */
+        align-items: center;
+    }
+
+    .characters__item {
+        width: 80%; /* Faz os itens ocuparem mais espaço em telas pequenas */
+    }
+}

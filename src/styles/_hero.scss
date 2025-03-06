@@ -1,0 +1,45 @@
+@use 'variaveis';
+/* Estilo para o header */
+._hero {
+    background: url('https://wallpapers.com/images/high/1920-x-1080-avengers-9a4bkiv789ej9g52.webp') no-repeat center center/cover; /* Definindo uma imagem de fundo */
+    height: 100vh; /* Altura de 100% da viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3498db;
+    text-align: center;
+    padding: 0 30px; /* Padding para o conteúdo não grudar nas bordas */
+}
+
+/* Estilo para o texto dentro do header */
+._hero_text {
+    max-width: 600px;
+    z-index: 1; /* Para garantir que o texto fique acima da imagem de fundo */
+    background-color: variaveis.$corPrincipal;
+
+._hero h1 {
+    font-size: 3rem; /* Tamanho grande para o título */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    font-weight: bold;
+    background-color:#ffff;
+    }
+}
+
+._hero p {
+    font-size: 1.2rem; /* Tamanho da fonte para o parágrafo */
+    margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+.cta-button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #2980b9;
+}

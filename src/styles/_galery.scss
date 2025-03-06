@@ -1,0 +1,83 @@
+@use 'variaveis';
+
+/* Estilo para o bloco principal da galeria */
+.gallery {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Título da galeria */
+.gallery__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Estilo para a lista de personagens */
+.gallery__list {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espaçamento entre as imagens */
+    flex-wrap: wrap; /* Permite que as imagens se ajustem em telas pequenas */
+    padding: 0;
+    list-style: none;
+}
+
+/* Estilo para os itens dentro da galeria (cada personagem) */
+.gallery__item {
+    width: 220px; /* Tamanho da imagem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo para as imagens dentro dos itens */
+.gallery__image {
+    width: 100%;
+    height: auto;
+    max-width: 200px; /* Limita o tamanho máximo da imagem */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Estilo para as legendas */
+.gallery__caption {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Efeito de hover no item */
+.gallery__item:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do item quando hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de zoom nas imagens quando o item é hover */
+.gallery__item:hover .gallery__image {
+    transform: scale(1.1); /* Aumenta a imagem também no hover */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .gallery__list {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px; /* Espaçamento entre os itens na versão coluna */
+    }
+
+    .gallery__item {
+        width: 100%; /* Ajustando o tamanho dos itens para telas menores */
+    }
+
+    .gallery__title { 
+        background-color: #fff;
+    }
+}
+
